@@ -1,5 +1,6 @@
 package jstreams.toolkit;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +64,19 @@ class StreamToolsTest {
         assertArrayEquals(num1.toArray(),
                 StreamTools.builder()
                         .append(num1.stream())
+                        .build().toArray()
+        );
+    }
+
+    @Test
+    void appendMultipleStream() {
+        listOfNumbers.clear();
+        listOfNumbers.addAll(num1);
+        listOfNumbers.addAll(num1);
+
+        assertArrayEquals(listOfNumbers.toArray(),
+                StreamTools.builder()
+                        .append(num1.stream(), 2)
                         .build().toArray()
         );
     }

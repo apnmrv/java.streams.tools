@@ -1,6 +1,8 @@
 package jstreams.toolkit;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamTools {
@@ -39,10 +41,6 @@ public class StreamTools {
         private Builder(){
         }
 
-        private Builder(Stream<T> stream) {
-            _stream = stream;
-        }
-
         @SafeVarargs
         private Builder(Stream<T>... streams) {
             _stream = StreamTools.concatenate(streams);
@@ -63,6 +61,13 @@ public class StreamTools {
             return this;
         }
 
+        public final Builder<T> append(Stream<T> stream, int times) {
+            assert times > 0;
+            Collection<T> fStream = fixedStream(stream);
+            return append(Stream.generate(() -> fStream.stream())
+                    .limit(times).flatMap(s -> s));
+        }
+
         public Builder<T> shuffle(){
             _stream = StreamTools.shuffle(_stream);
             return this;
@@ -70,6 +75,10 @@ public class StreamTools {
 
         public Stream<T> build(){
             return _stream;
+        }
+
+        private Collection<T> fixedStream(Stream<T> stream) {
+            return stream.collect(Collectors.toList());
         }
     }
 }
