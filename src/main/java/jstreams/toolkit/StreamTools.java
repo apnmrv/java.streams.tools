@@ -1,11 +1,11 @@
-package java.streams.toolkit;
+package jstreams.toolkit;
 
 import java.util.Collection;
 import java.util.stream.Stream;
 
 public class StreamTools {
     public static<T> Stream<T> concatenate(Stream<Stream<T>> streams){
-        return streams.reduce(Stream.of(), Stream::concat);
+        return streams.flatMap(s -> s);
     }
 
     @SafeVarargs

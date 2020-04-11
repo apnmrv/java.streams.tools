@@ -1,4 +1,4 @@
-package java.streams.toolkit;
+package jstreams.toolkit;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -97,9 +97,9 @@ class StreamToolsTest {
 
         assertTrue(
                 listOfNumbers.size() == listFromStream.size()
-                && listOfNumbers.containsAll(listFromStream)
-                && listFromStream.containsAll(listOfNumbers)
-                && !listOfNumbers.toArray().equals(listFromStream.toArray())
+                        && listOfNumbers.containsAll(listFromStream)
+                        && listFromStream.containsAll(listOfNumbers)
+                        && !listOfNumbers.toArray().equals(listFromStream.toArray())
         );
     }
 }
