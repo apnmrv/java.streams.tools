@@ -1,4 +1,4 @@
-package local.streams.sandbox;
+package java.streams.toolkit;
 
 import java.util.Collection;
 import java.util.stream.Stream;

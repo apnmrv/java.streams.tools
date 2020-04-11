@@ -1,4 +1,4 @@
-package local.streams.sandbox;
+package java.streams.toolkit;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
