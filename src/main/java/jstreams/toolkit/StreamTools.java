@@ -1,6 +1,7 @@
 package jstreams.toolkit;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,7 +21,9 @@ public class StreamTools {
     }
 
     public static<T> Stream<T> shuffle(Stream<T> stream){
-        return stream.parallel();
+        List<T> l = stream.collect(Collectors.toList());
+        Collections.shuffle(l);
+        return l.stream();
     }
 
     public static <T>Builder builder(){
