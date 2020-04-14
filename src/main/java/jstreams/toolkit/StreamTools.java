@@ -21,9 +21,7 @@ public class StreamTools {
     }
 
     public static<T> Stream<T> shuffle(Stream<T> stream){
-        List<T> l = stream.collect(Collectors.toList());
-        Collections.shuffle(l);
-        return l.stream();
+        return stream.collect(ShuffleCollector.shuffle());
     }
 
     public static <T>Builder builder(){
